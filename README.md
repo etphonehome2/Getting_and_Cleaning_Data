@@ -1,13 +1,11 @@
 # Getting_and_Cleaning_Data
 Coursera Getting_and_Cleaning_Data
 
-"Getting and Cleaning Data" Project Description
+### "Getting and Cleaning Data" Project Description ###
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare a tidy data that can be used for later analysis. 
 
-For this project, data was collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained can be found by clicking on this link [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
-
-The data for the project can be downloaded [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
+For this project, data was collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained can be found by clicking on this link [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones), and the data for the project can be found [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
 
 The R script, run_analysis.R, will perform the the following:
 
