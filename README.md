@@ -1,5 +1,5 @@
 # Getting_and_Cleaning_Data
-Coursera Getting_and_Cleaning_Data
+## Coursera Getting and Cleaning Data ##
 
 ### "Getting and Cleaning Data" Project Description ###
 
