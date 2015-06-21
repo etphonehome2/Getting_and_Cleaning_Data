@@ -52,26 +52,32 @@ activity_labels.txt
 
 ### Read test data ###
 
+```sh
 testData           <- read.table("./UCI HAR Dataset/test/X_test.txt",header=FALSE,col.names=mn)
 testData_activity  <- read.table("./UCI HAR Dataset/test/y_test.txt",header=FALSE,col.names=c("Activity_Id"))
 testData_subject   <- read.table("./UCI HAR Dataset/test/subject_test.txt",header=FALSE,col.names=c("Subject_Id"))
+```
 
 ### Read train data ###
 
+```sh
 trainData          <- read.table("./UCI HAR Dataset/train/X_train.txt",header=FALSE,col.names=mn)
 trainData_activity <- read.table("./UCI HAR Dataset/train/y_train.txt",header=FALSE,col.names=c("Activity_Id"))
 trainData_subject  <- read.table("./UCI HAR Dataset/train/subject_train.txt",header=FALSE,col.names=c("Subject_Id"))
-
+```
 ### Assigment of descriptive names to the activity data set activities ###
 
+```sh
 activities             <- read.table("./UCI HAR Dataset/activity_labels.txt",header=FALSE)[,2]
 testData_activity[,2]  <- activities[testData_activity[,1]]
 colnames(testData_activity)[2] <- "Activity_Name"
 trainData_activity[,2] <- activities[trainData_activity[,1]]
 colnames(trainData_activity)[2] <- "Activity_Name"
+```
 
 ### Merge the test and train dataset to one big dataset  ###
 
+```sh
 testData  <-cbind(testData_activity,testData)
 testData  <-cbind(testData_subject,testData)
 
@@ -79,19 +85,23 @@ trainData <-cbind(trainData_activity,trainData)
 trainData <-cbind(trainData_subject,trainData)
 
 oneDataset <-rbind(testData,trainData)
+```
 
 ### Extract the measurements on the mean and standard deviation for each measurement
 
+```sh
 data_mean_std <- oneDataset[, grepl("*.mean.*", colnames(oneDataset)) | grepl("*.std.*", colnames(oneDataset))]
 data_subj_act <-subset(oneDataset, select=c(Subject_Id, Activity_Id, Activity_Name))
 data          <- cbind(data_subj_act, data_mean_std)
+```
 
 ### Reshape the data to get the average of each variable for each activity and each subject.  ###
 
+```sh
 id_variables       <- c("Subject_Id", "Activity_Id", "Activity_Name")
 measure_variables  <- setdiff(colnames(data), id_variables)
 melt_data          <- melt(data, id = id_variables, measure.vars = data_labels)
 
 tidy_data   <- dcast(melt_data, Subject_Id + Activity_Name ~ variable, mean)
 write.table(tidy_data, file = "./data.txt")
-
+```
